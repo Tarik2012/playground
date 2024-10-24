@@ -1,0 +1,26 @@
+<!-- templates/pruebas/pruebas.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Pruebas</title>
+</head>
+<body>
+    <h1>Lista de Pruebas</h1>
+
+    <ul>
+        {% for prueba in object_list  %}
+            <li>
+                <a href="{% url 'pruebas:prueba_detail' prueba.pk %}">{{ prueba.title }}</a>
+            </li>
+        {% empty %}
+            <p>No hay pruebas disponibles.</p>
+        {% endfor %}
+    
+        <img src="{{ prueba.image.url }}" alt="{{ prueba.title }}" style="max-width: 100%;">
+ 
+    </ul>
+
+</body>
+</html>

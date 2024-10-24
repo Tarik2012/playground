@@ -1,0 +1,28 @@
+<!-- templates/pruebas/pruebas_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ object.title }}</title>
+</head>
+<body>
+    <h1>{{ object.title.title }}</h1>
+
+    <div>
+        <!-- Verificar si la prueba tiene una imagen antes de mostrarla -->
+        {% if object.image %}
+            <img src="{{ object.image.url }}" alt="{{ object.title }}" style="max-width: 10%;">
+        {% else %}
+            <p>No hay imagen disponible para esta prueba.</p>
+        {% endif %}
+        
+        <p>{{ object.content | safe }}</p>
+        <p><strong>Orden:</strong> {{ object.order }}</p>
+        <p><strong>Fecha de creación:</strong> {{ object.created }}</p>
+    </div>
+
+    <a href="{% url 'pruebas:pruebas' %}">Volver a la lista de pruebas</a>
+
+</body>
+</html>
